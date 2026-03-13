@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEDLE — Distribuidores Oficiales GoodWe & Pylontech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul:       #1060B8;
+    --azul-dark:  #0a4a8f;
+    --azul-deep:  #062d5e;
+    --verde:      #00BFA5;
+    --verde-dim:  #009e89;
+    --grad:       linear-gradient(135deg, #00BFA5 0%, #1060B8 100%);
+    --negro:      #07111e;
+    --grafito:    #0c1a2b;
+    --carbono:    #112035;
+    --borde:      #1a3050;
+    --blanco:     #f0f6ff;
+    --gris-text:  #7a9bbf;
+    --gris-mid:   #b8cfe8;
+    --azul-glow:  rgba(16,96,184,0.15);
+    --verde-glow: rgba(0,191,165,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999; opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    border-bottom: 1px solid var(--borde);
+    background: rgba(7,17,30,0.92);
+    backdrop-filter: blur(14px);
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 0.55rem; }
+  .logo-text { font-size: 1.7rem; font-weight: 800; letter-spacing: 0.12em; color: var(--azul); }
+  .nav-badge { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: var(--gris-text); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid; place-items: center;
+    padding: 9rem 4rem 6rem; position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--borde) 1px, transparent 1px), linear-gradient(90deg, var(--borde) 1px, transparent 1px);
+    background-size: 60px 60px; opacity: 0.28;
+  }
+  .glow-azul {
+    position: absolute; width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(16,96,184,0.2) 0%, transparent 65%);
+    top: 40%; left: 30%; transform: translate(-50%,-50%); pointer-events: none;
+  }
+  .glow-verde {
+    position: absolute; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,191,165,0.15) 0%, transparent 65%);
+    top: 35%; left: 68%; transform: translate(-50%,-50%); pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; text-align: center; }
+  .eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--verde);
+    margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid rgba(0,191,165,0.35); padding: 0.35rem 1.1rem;
+    border-radius: 2px; background: var(--verde-glow);
+  }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.8rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.01em; color: var(--blanco); margin-bottom: 1.4rem; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.1rem; font-weight: 300; color: var(--gris-mid); max-width: 580px; margin: 0 auto 2.5rem; }
+  .cta-primary {
+    display: inline-block; background: var(--grad); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 1.05rem 2.4rem; border: none; cursor: pointer; text-decoration: none;
+    transition: all 0.25s ease; border-radius: 3px; position: relative; overflow: hidden;
+  }
+  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(16,96,184,0.45); filter: brightness(1.1); }
+  .cta-note { display: block; margin-top: 0.85rem; font-size: 0.74rem; color: var(--gris-text); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde);
+    padding: 1.4rem 4rem; display: flex; align-items: center; gap: 2.5rem;
+    overflow-x: auto; background: var(--grafito);
+  }
+  .trust-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-text); white-space: nowrap; flex-shrink: 0; }
+  .trust-brands { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; }
+  .brand-pill { font-family: 'Montserrat', sans-serif; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris-mid); padding: 0.3rem 0.85rem; border: 1px solid var(--borde); border-radius: 2px; transition: all 0.2s; white-space: nowrap; }
+  .brand-pill.fv { color: var(--verde); border-color: rgba(0,191,165,0.4); background: var(--verde-glow); }
+  .brand-pill.fa { color: #6db3ff; border-color: rgba(16,96,184,0.5); background: var(--azul-glow); }
+  .brand-pill:hover { border-color: var(--verde); color: var(--verde); }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--verde); margin-bottom: 0.7rem; }
+  h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 1.2rem; }
+
+  /* QS STRIP */
+  .qs-strip { background: var(--grafito); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); padding: 3rem 4rem; }
+  .qs-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .qs-left { flex: 1; min-width: 260px; }
+  .qs-left p { font-size: 0.95rem; font-weight: 300; color: var(--gris-mid); line-height: 1.7; }
+  .qs-stats { flex: 1; min-width: 260px; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .qs-stat { background: var(--carbono); border: 1px solid var(--borde); border-top: 3px solid var(--azul); padding: 1.4rem 1.6rem; flex: 1; min-width: 110px; }
+  .qs-stat-num { font-size: 2rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 0.3rem; }
+  .qs-stat-label { font-size: 0.72rem; font-weight: 600; color: var(--gris-text); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ALIANZA */
+  .alianza { background: var(--negro); }
+  .alianza-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .alianza-text p { color: var(--gris-mid); font-size: 1rem; font-weight: 300; margin-bottom: 1rem; }
+  .alianza-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .brand-card { background: var(--carbono); border: 1px solid var(--borde); padding: 1.8rem 1.4rem; position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.2s; }
+  .brand-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
+  .brand-card:hover { border-color: rgba(0,191,165,0.45); transform: translateY(-3px); }
+  .brand-card-name { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.06em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+  .brand-card-desc { font-size: 0.8rem; color: var(--gris-text); line-height: 1.55; }
+  .oficial-badge { position: absolute; top: 0.9rem; right: 0.9rem; font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(0,191,165,0.12); color: var(--verde); padding: 0.2rem 0.5rem; border-radius: 2px; border: 1px solid rgba(0,191,165,0.25); }
+
+  /* RAZONES */
+  .razones { background: var(--grafito); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  .razones-inner { max-width: 1100px; margin: 0 auto; }
+  .razones-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+  .razon-card { background: var(--carbono); border: 1px solid var(--borde); padding: 2.4rem 2rem; position: relative; overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
+  .razon-card:hover { transform: translateY(-4px); border-color: rgba(0,191,165,0.4); }
+  .razon-num { font-size: 5rem; font-weight: 800; line-height: 1; color: rgba(16,96,184,0.07); position: absolute; top: 0.8rem; right: 1.2rem; }
+  .razon-icon { font-size: 2rem; margin-bottom: 1.1rem; }
+  .razon-title { font-size: 1.05rem; font-weight: 700; color: var(--blanco); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .razon-desc { font-size: 0.88rem; color: var(--gris-text); line-height: 1.65; font-weight: 300; }
+  .razon-tags { margin-top: 1.2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--azul-glow); color: #6db3ff; padding: 0.25rem 0.6rem; border-radius: 2px; border: 1px solid rgba(16,96,184,0.3); }
+  .tag.g { background: var(--verde-glow); color: var(--verde); border-color: rgba(0,191,165,0.25); }
+
+  /* CTA */
+  .gremio-cta { background: var(--azul-deep); border-top: 1px solid rgba(16,96,184,0.4); border-bottom: 1px solid rgba(16,96,184,0.4); text-align: center; position: relative; overflow: hidden; }
+  .gremio-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,191,165,0.12) 0%, transparent 70%); pointer-events: none; }
+  .gremio-cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .exclusivo-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(0,191,165,0.5); color: var(--verde); padding: 0.4rem 1.2rem; margin-bottom: 1.5rem; background: rgba(0,191,165,0.08); border-radius: 2px; }
+  .gremio-cta p { color: var(--gris-mid); font-size: 1.05rem; font-weight: 300; margin-bottom: 2rem; }
+
+  /* DEPÓSITOS */
+  .depositos-inner { max-width: 1100px; margin: 2.5rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .deposito-card { background: var(--carbono); border: 1px solid var(--borde); border-left: 4px solid var(--azul); padding: 2rem 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; transition: border-left-color 0.2s; }
+  .deposito-card:hover { border-left-color: var(--verde); }
+  .deposito-icon { font-size: 2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .deposito-city { font-size: 1.3rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.3rem; }
+  .deposito-desc { font-size: 0.87rem; color: var(--gris-text); line-height: 1.6; font-weight: 300; }
+
+  /* FAQ */
+  .faq { background: var(--grafito); border-top: 1px solid var(--borde); }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .faq-list { margin-top: 2.5rem; }
+  .faq-item { border-bottom: 1px solid var(--borde); overflow: hidden; }
+  .faq-q { font-weight: 600; font-size: 0.97rem; color: var(--blanco); padding: 1.4rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; gap: 1rem; }
+  .faq-q:hover { color: var(--verde); }
+  .faq-icon { width: 22px; height: 22px; flex-shrink: 0; border: 1.5px solid var(--azul); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--verde); font-size: 1.1rem; font-weight: 300; transition: transform 0.25s, background 0.2s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--azul-glow); }
+  .faq-a { font-size: 0.88rem; color: var(--gris-mid); line-height: 1.7; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.2s; }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.4rem; }
+
+  /* FOOTER */
+  footer { padding: 2.5rem 4rem; border-top: 1px solid var(--borde); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--negro); }
+  .footer-brand { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.12em; color: var(--azul); }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-link { font-size: 0.76rem; color: var(--gris-text); text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-link:hover { color: var(--verde); }
+  .footer-note { font-size: 0.72rem; color: var(--gris-text); font-family: 'DM Mono', monospace; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay:0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay:0.22s; }
+  .hero-content > *:nth-child(3) { animation-delay:0.38s; }
+  .hero-content > *:nth-child(4) { animation-delay:0.52s; }
+  .hero-content > *:nth-child(5) { animation-delay:0.62s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-badge { display: none; }
+    section, .trust-bar, footer, .qs-strip { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero { padding: 8rem 1.5rem 5rem; }
+    .alianza-inner, .razones-grid, .depositos-inner, .alianza-cards { grid-template-columns: 1fr; }
+    .qs-inner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-wrap">
+    <img src="data:image/png;base64,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" alt="TEDLE" style="height:38px; width:auto;" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='inline'">
+    <span id="logo-fb" style="display:none; font-size:1.7rem; font-weight:800; letter-spacing:0.12em; color:#1060B8;">TEDLE</span>
+  </div>
+  <span class="nav-badge">Dist. Oficial GoodWe · Pylontech · Argentina</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="glow-azul"></div>
+  <div class="glow-verde"></div>
+  <div class="hero-content">
+    <span class="eyebrow">⚡ Distribución mayorista · Sector solar Argentina</span>
+    <h1>Energía Confiable<br>Para <span class="grad-text">Profesionales.</span></h1>
+    <p class="hero-sub">Productos de calidad con respaldo directo de fábrica y soporte integral. Desde 2019 sirviendo exclusivamente al mercado de instaladores y sub-distribuidores en toda Argentina.</p>
+    <a href="#cta" class="cta-primary">SOLICITAR LISTA DE PRECIOS GREMIO</a>
+    <span class="cta-note">🔒 Exclusivo para instaladores y empresas del sector energético</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-label">Marcas que distribuimos</span>
+  <div class="trust-brands">
+    <span class="brand-pill fv">GoodWe</span>
+    <span class="brand-pill fa">Pylontech</span>
+    <span class="brand-pill fa">Growatt</span>
+    <span class="brand-pill">JSD Solar</span>
+    <span class="brand-pill">Risen</span>
+    <span class="brand-pill">Narada</span>
+    <span class="brand-pill">ZJBENY</span>
+  </div>
+</div>
+
+<!-- QUIÉNES SOMOS -->
+<div class="qs-strip">
+  <div class="qs-inner">
+    <div class="qs-left">
+      <p class="section-label">Quiénes somos</p>
+      <p>TEDLE (NEXT ENERGY S.R.L.) opera desde 2019 con foco en Generación Distribuida. No instalamos ni vendemos a clientes finales — servimos exclusivamente al mercado profesional de instaladores y sub-distribuidores, con relación directa con los fabricantes para garantizar precios competitivos y soporte técnico real.</p>
+    </div>
+    <div class="qs-stats">
+      <div class="qs-stat">
+        <div class="qs-stat-num">+5</div>
+        <div class="qs-stat-label">Años en el mercado</div>
+      </div>
+      <div class="qs-stat">
+        <div class="qs-stat-num">2</div>
+        <div class="qs-stat-label">Depósitos propios</div>
+      </div>
+      <div class="qs-stat">
+        <div class="qs-stat-num">7+</div>
+        <div class="qs-stat-label">Marcas líderes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIANZA GOODWE + PYLONTECH -->
+<section class="alianza">
+  <div class="alianza-inner">
+    <div class="alianza-text">
+      <p class="section-label">Alianza estratégica</p>
+      <h2>El Stack Más<br>Probado del Mercado</h2>
+      <p>Somos Distribuidores Oficiales de GoodWe y Pylontech — la integración de inversores y baterías más confiable del segmento residencial y comercial. Acceso a soporte de fábrica, garantía original y capacitación técnica continua.</p>
+      <p>TEDLE es el canal directo entre los fabricantes líderes y los profesionales del sector. No un intermediario más.</p>
+    </div>
+    <div class="alianza-cards">
+      <div class="brand-card">
+        <span class="oficial-badge">Dist. Oficial</span>
+        <div class="brand-card-name">GoodWe</div>
+        <p class="brand-card-desc">Inversores on-grid e híbridos. Monitoreo SEMS, compatibilidad amplia con baterías y certificaciones internacionales.</p>
+      </div>
+      <div class="brand-card">
+        <span class="oficial-badge">Dist. Oficial</span>
+        <div class="brand-card-name">Pylontech</div>
+        <p class="brand-card-desc">Baterías LiFePO₄ ciclo profundo. BMS integrado, alta densidad energética y vida útil superior a 6000 ciclos.</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-name">Growatt</div>
+        <p class="brand-card-desc">Inversores off-grid y soluciones híbridas. Ideal para proyectos en zonas sin red o de alta demanda autónoma.</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-card-name">+ Más Marcas</div>
+        <p class="brand-card-desc">JSD Solar · Risen · Narada · ZJBENY. Catálogo completo disponible en tu lista de precios gremio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 RAZONES -->
+<section class="razones">
+  <div class="razones-inner">
+    <p class="section-label">Por qué elegirnos</p>
+    <h2>3 Razones Para Hacer<br>de TEDLE Tu Proveedor Estratégico</h2>
+    <div class="razones-grid">
+      <div class="razon-card">
+        <div class="razon-num">01</div>
+        <div class="razon-icon">🏭</div>
+        <div class="razon-title">Logística Sin Fricción</div>
+        <p class="razon-desc">Depósitos propios en CABA y Córdoba Capital. Despacho ágil con transportes seleccionados por el cliente, menos intermediarios y fletes competitivos para el interior del país.</p>
+        <div class="razon-tags">
+          <span class="tag">CABA</span>
+          <span class="tag">Córdoba</span>
+          <span class="tag g">Envíos al Interior</span>
+        </div>
+      </div>
+      <div class="razon-card">
+        <div class="razon-num">02</div>
+        <div class="razon-icon">🔧</div>
+        <div class="razon-title">Soporte Integral Real</div>
+        <p class="razon-desc">No solo vendemos cajas. Dimensionamiento, consultoría técnica, soporte postventa y gestión de garantías con respaldo directo de los fabricantes. Desde el proyecto hasta la explotación.</p>
+        <div class="razon-tags">
+          <span class="tag g">Dimensionamiento</span>
+          <span class="tag g">Garantía Oficial</span>
+          <span class="tag">Diagnóstico</span>
+        </div>
+      </div>
+      <div class="razon-card">
+        <div class="razon-num">03</div>
+        <div class="razon-icon">🔒</div>
+        <div class="razon-title">Precios de Gremio Reales</div>
+        <p class="razon-desc">Catálogo y lista de precios exclusivos para instaladores y empresas del sector. La relación directa con fábrica asegura condiciones que no vas a encontrar en el canal retail.</p>
+        <div class="razon-tags">
+          <span class="tag">Solo Gremio</span>
+          <span class="tag g">Directo de Fábrica</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PRINCIPAL -->
+<section class="gremio-cta" id="cta">
+  <div class="gremio-cta-inner">
+    <div class="exclusivo-badge">🔒 Acceso exclusivo · Gremio e Instaladores</div>
+    <h2>¿Listo Para<br>Escalar Tus Proyectos?</h2>
+    <p>El catálogo completo y la lista de precios actualizada son exclusivos para instaladores y empresas del sector energético solar. Escribinos por WhatsApp y te respondemos en el día.</p>
+    <a href="https://wa.me/5491140289444?text=Hola%20TEDLE%2C%20soy%20instalador%2Fempresa%20del%20sector%20solar%20y%20quiero%20acceder%20a%20la%20lista%20de%20precios%20gremio." class="cta-primary" target="_blank">📲 SOLICITAR LISTA DE PRECIOS GREMIO</a>
+    <span class="cta-note" style="display:block; margin-top:0.9rem;">Respuesta en menos de 24 hs · Lunes a Viernes · +54 9 11 4028-9444</span>
+    <span class="cta-note" style="display:block; margin-top:0.4rem;">✉️ O escribinos a <a href="mailto:pwright@tedle.net" style="color:var(--verde); text-decoration:none;">pwright@tedle.net</a></span>
+  </div>
+</section>
+
+<!-- DEPÓSITOS -->
+<section style="background: var(--negro);">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label">Logística Propia</p>
+    <h2>Stock Real,<br>Entrega Inmediata</h2>
+    <div class="depositos-inner">
+      <div class="deposito-card">
+        <div class="deposito-icon">📍</div>
+        <div>
+          <div class="deposito-city">Buenos Aires (CABA)</div>
+          <p class="deposito-desc">Depósito propio en Ciudad Autónoma de Buenos Aires. Retiro disponible y despacho a todo el AMBA. Coordinación de envíos al interior con los transportes seleccionados por cada cliente.</p>
+        </div>
+      </div>
+      <div class="deposito-card">
+        <div class="deposito-icon">📍</div>
+        <div>
+          <div class="deposito-city">Córdoba Capital</div>
+          <p class="deposito-desc">Nodo estratégico en el centro del país. Cobertura ágil para NOA, NEA y Cuyo. Menores tiempos de tránsito y costos de flete para proyectos en el interior.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <p class="section-label">Preguntas frecuentes</p>
+    <h2>Respondemos<br>Lo Que Necesitás Saber</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">¿Hacen envíos al interior del país? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sí. Desde nuestros depósitos en CABA y Córdoba coordinamos envíos a todo el territorio nacional con transportes especializados en equipamiento fotovoltaico. Consultanos por tu provincia para cotizar el flete.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Ofrecen soporte técnico postventa? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sí. Gestionamos garantías, realizamos diagnósticos y reparaciones con respaldo directo de los fabricantes GoodWe y Pylontech. Somos el canal que acelera los tiempos de respuesta significativamente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Ayudan con el dimensionamiento del sistema? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sí. Ofrecemos dimensionamiento, consultoría y entrenamiento para asegurar eficiencia y adaptación a cada proyecto. Sin cargo adicional para nuestros clientes del gremio.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿La lista de precios es pública? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No. El catálogo y lista de precios son exclusivos para instaladores, integradores y empresas del sector energético. Al solicitarla por WhatsApp te pedimos datos básicos para validar el acceso al canal gremio.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿TEDLE instala sistemas o vende a usuarios finales? <span class="faq-icon">+</span></div>
+        <div class="faq-a">No. TEDLE no instala ni vende a clientes finales. Nuestro foco exclusivo es el mercado profesional: instaladores y sub-distribuidores. Eso nos permite ofrecerte precios de fábrica y soporte técnico especializado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo-wrap">
+    <img src="data:image/png;base64,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" alt="TEDLE" style="height:30px; width:auto;">
+  </div>
+  <div class="footer-links">
+    <a href="https://www.tedle.net" target="_blank" class="footer-link">tedle.net</a>
+    <a href="https://wa.me/5491140289444" target="_blank" class="footer-link">WhatsApp</a>
+    <a href="mailto:pwright@tedle.net" class="footer-link">pwright@tedle.net</a>
+    <a href="https://www.tedle.net/contacto/" target="_blank" class="footer-link">Contacto</a>
+  </div>
+  <span class="footer-note">© 2025 NEXT ENERGY S.R.L. · Distribuidores Oficiales GoodWe · Pylontech</span>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
