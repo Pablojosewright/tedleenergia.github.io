@@ -53,6 +53,20 @@
   .logo-wrap { display: flex; align-items: center; gap: 0.55rem; }
   .logo-text { font-size: 1.7rem; font-weight: 800; letter-spacing: 0.12em; color: var(--azul); }
   .nav-badge { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: var(--gris-text); letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-actions { display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap; }
+  .nav-links { display:flex; align-items:center; gap:1.1rem; flex-wrap:wrap; }
+  .nav-link { font-family:'DM Mono', monospace; font-size:0.68rem; letter-spacing:0.09em; text-transform:uppercase; color:var(--gris-mid); text-decoration:none; transition:color .2s, border-color .2s, background .2s; }
+  .nav-link:hover { color:var(--verde); }
+  .nav-link.webinar { color:var(--verde); border:1px solid rgba(0,191,165,0.35); padding:0.35rem 0.75rem; border-radius:2px; background:var(--verde-glow); }
+  .webinars { background: var(--negro); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde); }
+  .webinars-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center; }
+  .webinar-card { background:var(--carbono); border:1px solid var(--borde); border-left:4px solid var(--verde); padding:2rem; box-shadow:0 18px 50px rgba(0,0,0,.18); }
+  .webinar-card-title { font-size:1.25rem; font-weight:800; margin-bottom:.7rem; color:var(--blanco); }
+  .webinar-card p { color:var(--gris-mid); font-weight:300; font-size:.95rem; margin-bottom:1.4rem; }
+  .lead-box { max-width:760px; margin:2rem auto 0; background:rgba(17,32,53,.75); border:1px solid var(--borde); padding:1.5rem; }
+  .lead-box-title { font-weight:800; margin-bottom:.5rem; color:var(--blanco); }
+  .lead-box p { color:var(--gris-mid); font-size:.9rem; margin-bottom:1rem; }
+
 
   /* HERO */
   .hero {
@@ -200,9 +214,13 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-badge { display: none; }
+    nav { align-items:flex-start; gap:1rem; }
+    .nav-actions { justify-content:flex-end; gap:.75rem; }
+    .nav-links { gap:.65rem; justify-content:flex-end; }
+    .nav-link { font-size:.6rem; }
     section, .trust-bar, footer, .qs-strip { padding-left: 1.5rem; padding-right: 1.5rem; }
     .hero { padding: 8rem 1.5rem 5rem; }
-    .alianza-inner, .razones-grid, .depositos-inner, .alianza-cards { grid-template-columns: 1fr; }
+    .alianza-inner, .razones-grid, .depositos-inner, .alianza-cards, .webinars-inner { grid-template-columns: 1fr; }
     .qs-inner { flex-direction: column; }
   }
 </style>
@@ -215,7 +233,14 @@
     <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAClAe8DASIAAhEBAxEB/8QAHAABAAMBAQEBAQAAAAAAAAAAAAUGBwQDAggB/8QASRAAAQMCAgMJCgwFBQEBAAAAAAECAwQFBhEHEkETITE2UWFxgbEVIlNVcnORkrLRFBYjMlJUYnSTlKHCNEJDRcEzNWOD4YKi/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAUGAwQHAgH/xAA3EQABAwICBggFBAMBAQAAAAAAAQIDBAURIQYSMUFxsRM0UWGBkcHRFjIzUvAUIqHhI0LxQ1P/2gAMAwEAAhEDEQA/APxkAAAAAAAdVHbq+s/haOeZOVjFVPTwHprXOXBqYnlzmtTFy4HKCw02Dr5N86CKFP8AkkT/ABmd8OAq1f8AWrqdnkNV3bkbjLZVv2Rry5mm+50jNsic+RTwXqPR+3+e6qvRBl+46GaP6TVTWuM6rzMRDKtnq02t/lPc11vdEn+/8L7Geg0dmjuiVd+41HqIdcGjmz5/KVdc7mRzU/aYXUEzNqHh1+ok/wBl8lMtBslJo/w0zLdKeeby5nJ7ORN0GEsNU6pudmpHecZuntZmlL/i2mrJpNSt+Vqr5e5gUbHyPRkbXPcvAjUzVSYt+E8S1+S0tjrnNXgc6JWNXrdkh+iKClpqZurTU8MLeSNiNT9CShIOruzok/a0jZtLH/8AnGniuPsYPQaJ8XVKIs0VHR5+GnRfYRxOUmharcifC79BFypFTq/tVDZk4D+ldk0grXLkqJwT3xIqXSevf8qo3gnviZQ3QtQ6io6+1Kv2KkDUROrMhcRaH7pR0z6i018dx1UzWF0e5vVPs76oq+g3EGOO+1rHYq/HiiGKPSO4Mdir8e5UT2PyC9rmOVj2q1zVyVFTJUU/hatLdPFS6RLvFC1GsWRkip9p8bXOX0qpVS+wS9NE2RN6IvmdJp5knhZKn+yIvmmIABlMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATfXJCz2LB1dXNbNWO+CQrvoipm9ydGzr9BNYFw7FBTR3OtjR08ia0TXcDG7F6V/Qt5ZrdZGvakk+/d7lYuV7cxyxQbt/sRFsw1Z6BEWOkbLIn9Sbv1/XeTqQl0RETJN5ACyRQxxJqsRETuK1LNJKus9yqveAAZDGfTdh6NPNuw9GmCU+Ke8Z0RnPGdEZB1RicdUWw64dhyRbD+1Nyt9A3Wra6mpk/5ZUb2lVrTFqq5cGpiS8J2wme3PSZhuhRW0z56+ROBImZNz53Oy/TMpd90qYhrdaO3NhtkS8CsTXky8pd70IhWZ7fPULg1MOJv09hrahfl1U7Vy/jb/AAbxW11FQQbtXVlPSx/TmkRjfSp5Wq7Wu6se+2XCmrGsXJ+4yo7V5M8uA/KtdWVddUOqK2qmqZncL5Xq5y9amxaCsK3C3rLiCu3SnbUQ7lBAu8r2qqLruTYm8mXSq8mcbXWSOkp1kfJ+7cmG3uNq4aPxUNKsskv7tyYbV7O01Y86maKmp5Kid6RxRMV73rwNaiZqq9R6GR6csYNZE7C9vlze7Ja17V4E4Uj7FXqTapEUNI+rmSJvj3IQdvoX1s6RM8V7E7TMMWXVb5iSvuqorUqJlcxF4UYm81F6kQiwDpjGIxqNbsQ63HG2NiMbsTIAA9HsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH1GjVkajvm5pn0HyADb2ojWo1qIiImSIh/Sr4KxFDW0sVBVSIyrjajWq5f9VE4MufmLQdHpqhlRGj2Lkc2qaeSnkWN6ZgAGcwA86meKmp5Kid6MijarnOXYh6HBiGhdcbNU0bHar5Gd6vOioqJ6UPEquaxVamK4ZHuJGueiOXBMcys1+PWNeraGhV6JwPldln1J7yNlx1enL3jKSNPsxqvapWZ4pIJnwzMdHIxcnNcmSop8FEludXIq6zsP4L3FaaNqJgxF45lhfjTETvm1zWeTCz/KHPJinEMnDdqhPJVG9hDA1HTyu+Zy+ZsNoqZuyNvkh3T3e7ToqT3OtkRdjp3KnacSqqqqquaqfwGLHE2Gsaz5UwB9RMfLI2ONjnvcuTWtTNVXkRD2ttDV3GtioqGB89RKuTGMTNV9yc5vGjfAdHh1jK2sSOqujk35Ms2w57GZ7ftcPQaVbWspWay5ruQjbndYbezF2bl2J+biJ0Z6MmUm5XfEcTZKjedDSLvtj538q83AnPs1U/icBWdIWLqTClpWV2rLXTIqU0GfCv0nfZT/AMKDNNUXGoRFzVdidhzmeequtSmObl2JuT8/6cGlPGseGLd8Eo3NfdahvyTeHcm/TX/CbV6D88zSyTTPmmkdJJI5XPe5c1cq76qq7VPe6V9Xc7hNX10zpqid2s967V/wnMcperbbmUUWqmbl2r+bjotptbLfDqpm5dq/m5AACRJUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/qKqKiouSoWax4xr6JGw1ifDIU3kVy5Pb17ev0lYBngqZad2tG7BTBPTRVDdWRuKGt2nEFqueTYKlGSr/AEpO9d/71EqYeTFrxLd7fk2OqWWNP6c3fJ706lLDTaQ7p2+KexXanR7fA7wX3NYBUbXjmimyZXwPpnbXt79vvT9Sz0VZS1sW60lRHMzlY7PLp5Cdp6yCoT/G7Hn5EDUUc9Ov+Rqpy8yLxNhumvMe6tVIatqZNky3nczuXpM1ulurLZUrT1kLo37F2OTlRdqGzt2HlcKCkuNKtPWQNljXl4UXlRdikZcrXHUKr2ZO58Tft94kpcGPzb/KcPYxIFrxLgytt+tU0GtV0qb6oifKMTnTanOhVCpSwvhdqvTAuNPUxVLNeNcUB2Wa2Vl3uMVBQxLJNIvU1NqquxEPm1UFVc6+Kio4lkmkXJETgTnXkRDdMFYbo8O0CRQoklTIiLPOqb715E5ETkNeR2q3Ej7rdWUMeCZvXYnqv5mdGBMKUOGqPKNGzVkifLVCt31+ynI3mLdCcUJ/bpc6Oz2ua418qR08LdZy7V5ETlVeBEKlcNaR3aqnOJ5JamXWcus5TzxjiOhwxZX3CsXWd82GFFydK/kTm5V2IfmzEV4rr9dprncJdeaVeBN5rG7GomxEOzG2Ja3FF6fX1SqyJve08OeaRM5OnlXb6CCJi02ttGzWd867e7uOg2SztoI9d/zrt7u5PUAAmCdAAAAAAOiloa2ra51LR1E7Wrkqxxq5E9B7dx7v4qrvy7/cXHRd/AVnnW9hcSxUVkjqIGyq5UxK5W3uSnndEjUXAx3uPd/FVd+Xf7h3Hu/iqu/Lv9xsQNr4di+9TV+I5fsQx3uPd/FVd+Xf7h3Hu/iqu/Lv9xsQHw7F96j4jl+xDFqqkq6RWpVUs8Cu+bukatz6MzwLrpT/ANeg8l/a0pRXa2nSmndEi44exYqGoWpgbKqYY+51wWy5TxNlgt9XLG75r2QuVF6FRD77j3fxVXfl3+40rBXFeh8l3tKTBOwWGOSJr1euaIpBT3+SOVzEYmSqnkY73Hu/iqu/Lv8AcO4938VV35d/uNiBl+HYvvUxfEcv2IY73Hu/iqu/Lv8Acck0UkMropo3xyNXJzXJkqdKG2mSYu4y1/nV7CNudrZRxo9rscVwJK2XV9ZIrHNwwTEijshtdzmibLDbquSNyZtc2FyovQuRxmt4R4tUHmk7TXtlC2skVjlwwTE2bnXOo40e1McVwMy7j3fxVXfl3+4dx7v4qrvy7/cbECa+HYvvUhPiOX7EMYnt9fAmc9DUxIm18Tk7UOY3Ai7tYLXc2ru9M1si8Esaark69vWYJtHXImMb8eJnh0jaq4Ssw4exkYJfElhqrLOmv8rTvXKOVE3l5l5FIgr0sT4Xqx6YKhYopWTMR7FxRQdNNb6+qj3SmoamdmeWtHE5yZ8maIcxpWjXi677w7sQ27dSNq5ujcuGRqXGrdSQ9I1Mcyh9x7v4qrvy7/cctRBNTyrFUQyQyJwse1WqnUpthl+kDjRUeSz2UN25WllHEkjXKueBo227PrJljc1EyxK+ACDJ0AAA7IbXc5omyw26rkjcmbXNhcqL0LkfXce7+Kq78u/3Gm4R4tUHmk7SVLRDYI5I2vV65oilWm0gkjkcxGJkqoY73Hu/iqu/Lv8AcO4938VV35d/uNiBk+HYvvUx/Ecv2IY73Hu/iqu/Lv8AcccsckUjo5WOY9q5Oa5MlReRUNuMhxPxiuH3h/aRlztbKNjXNdjipJ2y6PrXua5uGCEaACGJoAAAAAAAAAHpTzzU8qS08skUicDmOVF/Q8wfUVUXFD4qIqYKWu0Y3uFMrWV0bauNP5vmvTr4F9HWXWyYhtd1RraaoRsy/wBKTvX/APvVmY+f1FVFRUXJU4FJOC71EeTl1k7/AHIiqslNPm1NVe7Z5f8ADfGbyZlRxXhihukrp6NraarXhc1O9evOnLzp+pV7HjK50LUgqnLV0/B369+3oXb1mlYeWOspYbg1HakrdaNHtyXLlyNmWojq24IhXJKaotT+kx4Km888BYaisNCj5Ea+umT5aRP5U+inN2r1Fth2HJFsOuHYQVYiNTBCDqZ3zyLJIuKqdkbmtarnORrUTNVVckRDDNKWLnYiunwSkkXuZSuVIkT+q7gV69ic3SWvTDihaOk+L9DJlPO3Oqci/NjXgb0rt5ukyEjaSlTW6V3gWnR21o1P1UiZr8vv7AAEkW4AAAAAAAAAsmEcRQ2SmnilppJVkejkVqomW8Tfx9pPqE/roUAEjDdamFiRsdknchGzWmlnesj25r3qaxhq/wAN8+EblTyQ7jq56youetn7iYKPoq/uX/V+8vBb7bO+embI/auPNSn3KBkFU6NmxMOSEJiTEUNkniilppJVkarkVqomW+RPx9pPqE/rocOlH+Po/NO7SnEDcLrUw1Lo2OyTuTsJ+32mlmpmyPbmvevaT2L77Fe5KZ0UD4txRyLrKi555e4gQCCnmfPIsj9qk9BAyCNI2bENYwVxXofJd7SkwQ+CuK9D5LvaUmDoNH1ePgnI57WdYk4rzKtccaUtFXz0jqKZ7oXqxXI5MlyOf4+0n1Cf10PO7YLqq251NW2thY2aRXo1WrmmanL8Qqv6/B6ikHJJdtddVMscthORxWjUTWXPDPad3x9pPqE/roUy9Vba+61FYxisbK/WRqrvoS98wnUWq2vrZKuKRrFRNVrVRd9ciuERcKirdhHU8d3oS9up6NuMtNw3+oNbwjxaoPNJ2mSGt4R4tUHmk7Td0d+u7h6oaWkX0G8fRSVKpXY1paStnpXUUznQyOjVUcmS5LlmWsx3EH+/3D71L7akteayWlY1YlwxUibNRxVT3JKmOCGhWrF1prpkhV0lNI5cm7qiIir0ovaWAw807AFykr7Lucz1dLTO3NVXhVuXeqv6p1GC1XZ9S/opdu5TPdrSymZ0sWzehNXKiguFDLSVDdaORMudF2KnOhj9xpZKGumpJfnxPVqry8/WbQZzpMpkivcVQ1Mt2hTW51RcuzI+X+mR0STJtTkp90fqVbMsK7F5p/RVTStGvF133h3YhmppWjXi677w7sQi7D1vwUlb/wBU8ULMZfpA40VHks9lDUDL9IHGio8lnsoTGkHVU4pyUhtHutLwXmhXwAU0uYAABreEeLVB5pO0lSKwjxaoPNJ2kqdHpfoM4JyObVX138V5lUrsa0tJWz0rqKZzoZHRqqOTJclyzPH4+0n1Cf10PG5YKqqu41NU2tha2aZ8iIrVzTNVXI5/iFV/X4PUUgny3fWXVTLwJ9kVo1U1lz8Tu+PtJ9Qn9dClXapbW3Opq2tVjZpFejV4UzUmL9hWotFvWskq4pWo5G6rWqi75XSIuFRVuVI6ndnu9CXt1PSNRZKbflv9QACMJMAAAAAAAAAAAAAAAm8GWZb1eWQvRfg0XfzqnJyda73pNpga1rWta1GtRMkREyREKzgG1Ja7FGr25T1GUsnKmfAnUn6qpZ4ydhp+hhz2qc/vVatTOqJ8rck9VOqLYe0kyQQrIvDsTlU8Ythw1lZFPVyU0UrXOp1RsjUXfa5URd/qVCErSHZGr3GVaR7LVUd1kujpHzwVciuV7t9WPX+Vebk5ky2FTP0Q+y093tk9DWNzimZqqu1q7FTnRd8wO926otN2qbbVJlLTyKx3IvIqcypkvWadPOj8WLtQvlluKVLFhd8zeRxgA2icAAAAAAAAAAAALxoq/uX/AFfvLwUfRV/cv+r95eC92bqTPHmpQ7111/hyQoGlH+Po/NO7SnFx0o/x9H5p3aU4qt264/8ANyFrtHU2fm9QACOJE1jBXFeh8l3tKTBD4K4r0Pku9pSYOjUfV4+CcjnFZ1iTivMAy/EN5usN8rYorhUsjZM5GtbIqIiZnD3dvPjOr/EUiZL/ABMcrVYuXAlo9H5XtRyPTPiX/SBxXqPKZ7SGXHbVXW5VUKw1NdUSxrwte9VRTiK/cqxtXMkjUwywLBbKN1HCsblxzx5A1vCPFqg80naZIa3hHi1QeaTtJDR367uHqhH6RfQbx9FJUx3EH+/3D71L7amxGO4g/wB/uH3qX21NzSL6bOJp6OfVfwOEvWitHalxcvzVWNE6e+z/AMFHjY+SRscbVc9y5NaiZqq8hquD7U602dkUqIk8i7pLzKuzqT/JG2KFz6pHpsbj/KYEnfZmspVYu12H8LiTJRNKf8RQJ9h/ahezNdI9U2e/pCxc0p4kYvlLvr2oTt8ejaRUXeqe5A2JiurEVNyL7epWTStGvF133h3YhmppWjXi677w7sQgrD1vwUnr/wBU8ULMZfpA40VHks9lDUDL9IHGio8lnsoTGkHVU4pyUhtHutLwXmhXwAU0uYAABreEeLVB5pO0lSKwjxaoPNJ2kqdHpfoM4JyObVX138V5gGWXu9XaK9V0UdxqWMZUSNa1JFRERHLkhyd3bz4zq/xFId+kETXK3UXLgTLNH5XtR2umfEvekXi0/wA6ztMyOyrulxq4dxqa2eaNVz1XvVUzOMgLlWNq5ukamGWBYLbRupIejcuOeIABHkgAAAAAAAAAAAACWwlb0uV/pqZzc40dryeS3fVOvg6yJL5oppN6sr3JyQtX9XftNuhh6adrV2exo3Ko6Cme9Nu7xyNBjOiM54zojLBVHN3HpU1MdFRTVcy5Rwxukd0ImZkODMQyQ4xWqrH/ACVwlVJ9/eRXL3q9Sr6My8aUa1aTCMkTXZOqpGxJlyfOX9G5dZjhWahMXKharBQtlppHP/2y8E/vkfqWlYjGoiGVae7QkVdQ3qJuSTtWCZUT+Zu+1elUzT/5L9gG5rd8LUFa52tKsepKq8Ou3vVXrVM+s49MFElZgCsflm+meydvU7Jf/wAucVdJFhq249uHmQFskfR3JrXduqvjlzPz6ACxnSwAAAAAAAAAAAC8aKv7l/1fvLwUXRa9jO6Ou9rc9yyzXL6Zd92h8Kz1kL1ZlT9Ezx5qUS8ov61/hyQoelH+Po/NO7SnFw0nva+vo1a5HfJO4Fz2lPKtduuP/NyFqtPU2fm9QACOJE1jBXFeh8l3tKTBCYLljbhiiR0jEXVXeVftKTG7Q+FZ6yHRaNyfp4+CcjnNY1f1EnFeZEVeFrNVVMlTNTvdJI5XOVJXJmq9Z5fE+w/VX/iu95ObtD4VnrIN2h8Kz1kPK0dKq4qxvkh6SsqkTBHu81IP4n2H6q/8V3vKFiujp6C/1NJStVkMepqoqquWbEVd9edTWd2h8Kz1kMtx0qOxVWK1UVO8308hpC3yngip0WNqIuO5O5SasdTPLUKkjlVMN696EIa3hHi1QeaTtMkNYwlLE3DdCiyMRUiTeVycpq6PLhO7h6obWkSYwN4+ikwQlThWy1FTLUS0z1kler3rurkzVVzXaTG7Q+FZ6yDdofCs9ZC0yxRTJhIiLxKrFLLCuMaqnA4rbZbXbn69HRRxv+mubnJ1rmpIHPPX0NOirPWU8SJ9OREIC74zttKxWUedZNsy3mJ0qvD1GJ89NStzVGp2f0hlZBU1b8URXL2/2pL4gusFotz6mVUV/BEza93J0cpkdTNJUVEk8zldJI5XOXlVTou1yq7pVLU1kmu7gaibzWpyIhxlPudxWsemGTU2e5cbXbko2Ljm5dvsDStGvF133h3Yhmpo+jiSNuHnI57Wru7t5V5kM1hXCq8FMN+TGk8ULSRNyw5abjVuqqqBz5XIiKqSOTgTLYpJ7tD4VnrIN2h8Kz1kLhJHFKmq9EVO8p0UksS6zFVF7iD+J9h+qv8AxXe8fE+w/VX/AIrveTm7Q+FZ6yDdofCs9ZDB+ipPsb5IZ/11X/8AR3mpnWPbPQWn4F8BidHuu6a+b1dnlq5cPSpVy7aUnsf3O1HtdluueS5/QKSU66sZHVvaxMEy2cELnaXvkpGOeuK57eKmt4R4tUHmk7SVIfCUsTcN0KLIxFSJN5XJykru0PhWeshdaVydAzgnIpFU1enfxXmQ9ThWy1FTLUS0z1kler3rurkzVVzXaefxPsP1V/4rveTm7Q+FZ6yDdofCs9ZDwtHSquKsb5IZErapEwR7vNSD+J9h+qv/ABXe8oGJqSChvtVS0zVbFG5EairnlvIpre7Q+FZ6yGVY0VHYnrVaqKmsm+nkoQl8p4IoGrG1EXHcncpN2KonlnckjlVMN696EOACrlpAAAAAAAAAAAABq2juBIcL07sslle96+tl2IhlJseEmo3DdvRPANX075M2RuMzl7E9Sv6RPVKdre1fRSajOiM54zojJKqKS4z/AEz1C52ylRd5Ekkcnqon+TOi7aYnquIaRmxKRF9L3e4pJWJfnU6FZmatDGn5tNi0C1iyWa4UKrnuE7ZE5kemXaxS/Ypp/heFLtT5ZrJRyonTqLl+plOgOVUvdxh2Pp2u9Dsv3GyVKI6hna5EVFiciou3eKndf2T4p3KUq9t6G5Ocnai8vU/KIALQdJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsGDJN1wxQOTZFq+hVT/AAY+aZoxq0msT6ZV76nlVMuRrt9P11iXsr0bOrV3oQOkMaupkcm5S4xnRGc8Z0RkpVFHcZtpkp3NutDVZLqyQLHnztcq/uKGbdjqxOvthdDAifCoXbpDntXa3rT9cjFJo5IZXRTRujkYuq5rkyVF5FQrMyYPUvdgqmy0qMxzbl7Gi6BGOW/3CVE71tKjV6VcmXYpsddI2G2VUrvmshe5ehGqUTQzYprVYpa2qjWOeucjka5MlSNPm59Oar0KhYNI9eluwLdZtbJ0kCws5c397velV6ip3JOmqEam9UQqV2clXc1azPFUT05n5vABZzpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALFgC6Ntt8ayV2rBUpub1XgRf5V9O91ldBkhldE9Ht2oYaiFs8To3bFN9jOiMoeBMWRVEUdtucrY6hqI2KVy5JImxFX6Xb0l8jLC+dkzNdpzispZKWRY5E/s6oth9LbrfPUsqZ6GllnZ82R8TVcnQqpmfMWw64it1po6ytzRTthMn06YgZU1VPh+mk1m0y7rUqi72uqd63qRVXr5ibxzpCo7VBJRWeVlTcFRWrI3vmQ8+fAq83p5DGJ5ZJ5nzTPdJJI5XPc5c1cq8KqRNNSKsvSv3bCz6P2h6SJVTJgibE9fY+AASpdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATdqxVfbaxI6eue6NN5GSoj0Toz306gD01yt2KY5YY5U1ZGoqd5KrpFxDqqjfgbF5UiXNPSpDXfE19urXR1tymfE7hjauoxU50bki9YB8VVdtMEVBTRLrMjRF4EQAD4bYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//9k=" alt="TEDLE" style="height:38px; width:auto;" onerror="this.style.display='none'; document.getElementById('logo-fb').style.display='inline'">
     <span id="logo-fb" style="display:none; font-size:1.7rem; font-weight:800; letter-spacing:0.12em; color:#1060B8;">TEDLE</span>
   </div>
-  <span class="nav-badge">Dist. Oficial GoodWe · Pylontech · Argentina</span>
+  <div class="nav-actions">
+    <div class="nav-links">
+      <a href="#cta" class="nav-link">Lista gremio</a>
+      <a href="#logistica" class="nav-link">Logística</a>
+      <a href="https://goodwe01-my.sharepoint.com/personal/leandro_mendoza_goodwe_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fleandro%5Fmendoza%5Fgoodwe%5Fcom%2FDocuments%2FRecordings%2FWebinar%20Tedle%2D20260430%5F131105%2DGrabaci%C3%B3n%20de%20la%20reuni%C3%B3n%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E9c4eda72%2D35e5%2D44da%2D8aec%2Db96cd2137d5c" class="nav-link webinar" target="_blank" rel="noopener noreferrer">Webinars</a>
+    </div>
+    <span class="nav-badge">Dist. Oficial GoodWe · Pylontech · Argentina</span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -311,10 +336,10 @@
         <div class="razon-num">01</div>
         <div class="razon-icon">🏭</div>
         <div class="razon-title">Logística Sin Fricción</div>
-        <p class="razon-desc">Depósitos propios en CABA y Córdoba Capital. Despacho ágil con transportes seleccionados por el cliente, menos intermediarios y fletes competitivos para el interior del país.</p>
+        <p class="razon-desc">Coordinación comercial y logística para instaladores, con entrega/retiro según operación y despacho con transportes indicados por el cliente. Punto operativo destacado: GLI Córdoba.</p>
         <div class="razon-tags">
-          <span class="tag">CABA</span>
-          <span class="tag">Córdoba</span>
+          <span class="tag">AMBA</span>
+          <span class="tag">GLI Córdoba</span>
           <span class="tag g">Envíos al Interior</span>
         </div>
       </div>
@@ -343,6 +368,22 @@
   </div>
 </section>
 
+<!-- WEBINARS -->
+<section class="webinars" id="webinars">
+  <div class="webinars-inner">
+    <div>
+      <p class="section-label">Capacitación técnica</p>
+      <h2>Webinars para instaladores</h2>
+      <p style="color:var(--gris-mid); font-weight:300; max-width:620px;">Sumamos material técnico de capacitación para que los instaladores puedan conocer mejor las soluciones GoodWe, resolver dudas de aplicación y vender con más respaldo profesional.</p>
+    </div>
+    <div class="webinar-card">
+      <div class="webinar-card-title">Webinar TEDLE · GoodWe</div>
+      <p>Grabación técnica orientada a profesionales del sector solar. Se abre en una nueva pestaña.</p>
+      <a href="https://goodwe01-my.sharepoint.com/personal/leandro_mendoza_goodwe_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fleandro%5Fmendoza%5Fgoodwe%5Fcom%2FDocuments%2FRecordings%2FWebinar%20Tedle%2D20260430%5F131105%2DGrabaci%C3%B3n%20de%20la%20reuni%C3%B3n%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E9c4eda72%2D35e5%2D44da%2D8aec%2Db96cd2137d5c" class="cta-primary" target="_blank" rel="noopener noreferrer">▶ VER WEBINAR</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA PRINCIPAL -->
 <section class="gremio-cta" id="cta">
   <div class="gremio-cta-inner">
@@ -351,12 +392,17 @@
     <p>El catálogo completo y la lista de precios actualizada son exclusivos para instaladores y empresas del sector energético solar. Escribinos por WhatsApp y te respondemos en el día.</p>
     <a href="https://wa.me/5491140289444?text=Hola%20TEDLE%2C%20soy%20instalador%2Fempresa%20del%20sector%20solar%20y%20quiero%20acceder%20a%20la%20lista%20de%20precios%20gremio." class="cta-primary" target="_blank">📲 SOLICITAR LISTA DE PRECIOS GREMIO</a>
     <span class="cta-note" style="display:block; margin-top:0.9rem;">Respuesta en menos de 24 hs · Lunes a Viernes · +54 9 11 4028-9444</span>
-    <span class="cta-note" style="display:block; margin-top:0.4rem;">✉️ O escribinos a <a href="/cdn-cgi/l/email-protection#7d0d0a0f141a15093d091819111853131809" style="color:var(--verde); text-decoration:none;"><span class="__cf_email__" data-cfemail="80f0f7f2e9e7e8f4c0f4e5e4ece5aeeee5f4">[email&#160;protected]</span></a></span>
+    <span class="cta-note" style="display:block; margin-top:0.4rem;">✉️ O escribinos a <a href="mailto:pwright@tedle.net" style="color:var(--verde); text-decoration:none;">pwright@tedle.net</a></span>
+    <div class="lead-box">
+      <div class="lead-box-title">Datos sugeridos para acelerar el alta</div>
+      <p>Al escribirnos, indicá nombre, empresa, zona de trabajo, si sos instalador/integrador/sub-distribuidor y qué marcas te interesan.</p>
+      <a href="https://wa.me/5491140289444?text=Hola%20TEDLE%2C%20quiero%20acceder%20a%20la%20lista%20gremio.%20Mis%20datos%3A%20Nombre%2C%20empresa%2C%20zona%2C%20tipo%20de%20cliente%20y%20marcas%20de%20inter%C3%A9s." class="footer-link" target="_blank" style="color:var(--verde);">Enviar datos por WhatsApp →</a>
+    </div>
   </div>
 </section>
 
-<!-- DEPÓSITOS -->
-<section style="background: var(--negro);">
+<!-- LOGÍSTICA -->
+<section id="logistica" style="background: var(--negro);">
   <div style="max-width:1100px; margin:0 auto;">
     <p class="section-label">Logística Propia</p>
     <h2>Stock Real,<br>Entrega Inmediata</h2>
@@ -364,15 +410,15 @@
       <div class="deposito-card">
         <div class="deposito-icon">📍</div>
         <div>
-          <div class="deposito-city">Buenos Aires (CABA)</div>
-          <p class="deposito-desc">Depósito propio en Ciudad Autónoma de Buenos Aires. Retiro disponible y despacho a todo el AMBA. Coordinación de envíos al interior con los transportes seleccionados por cada cliente.</p>
+          <div class="deposito-city">Buenos Aires / AMBA</div>
+          <p class="deposito-desc">Atención comercial y coordinación de pedidos para instaladores, integradores y sub-distribuidores. Despachos al interior con el transporte indicado por cada cliente.</p>
         </div>
       </div>
       <div class="deposito-card">
         <div class="deposito-icon">📍</div>
         <div>
-          <div class="deposito-city">Córdoba Capital</div>
-          <p class="deposito-desc">Nodo estratégico en el centro del país. Cobertura ágil para NOA, NEA y Cuyo. Menores tiempos de tránsito y costos de flete para proyectos en el interior.</p>
+          <div class="deposito-city">GLI Córdoba</div>
+          <p class="deposito-desc">Entrega y retiro coordinado desde depósito GLI en Córdoba. El cliente coordina y asume transporte y seguro hasta destino, según condiciones de cada operación.</p>
         </div>
       </div>
     </div>
@@ -417,13 +463,12 @@
   <div class="footer-links">
     <a href="https://www.tedle.net" target="_blank" class="footer-link">tedle.net</a>
     <a href="https://wa.me/5491140289444" target="_blank" class="footer-link">WhatsApp</a>
-    <a href="/cdn-cgi/l/email-protection#7c0c0b0e151b14083c081918101952121908" class="footer-link"><span class="__cf_email__" data-cfemail="ddadaaafb4bab5a99da9b8b9b1b8f3b3b8a9">[email&#160;protected]</span></a>
-    
+    <a href="https://goodwe01-my.sharepoint.com/personal/leandro_mendoza_goodwe_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Fleandro%5Fmendoza%5Fgoodwe%5Fcom%2FDocuments%2FRecordings%2FWebinar%20Tedle%2D20260430%5F131105%2DGrabaci%C3%B3n%20de%20la%20reuni%C3%B3n%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E9c4eda72%2D35e5%2D44da%2D8aec%2Db96cd2137d5c" target="_blank" rel="noopener noreferrer" class="footer-link">Webinars</a>
     <a href="mailto:pwright@tedle.net" class="footer-link">pwright@tedle.net</a>
     <a href="https://wa.me/5491140289444?text=Hola%20TEDLE%2C%20quiero%20hacer%20una%20consulta." target="_blank" class="footer-link">Contacto</a>
   </div>
   <p style="font-size:0.7rem; color:rgba(255,255,255,0.2); margin-top:1.5rem; font-family:'DM Mono',monospace; letter-spacing:0.08em;">
-    © 2025 NEXT ENERGY S.R.L. · Distribución exclusiva canal gremio
+    © 2026 NEXT ENERGY S.R.L. · Distribución exclusiva canal gremio
   </p>
 </footer>
 
